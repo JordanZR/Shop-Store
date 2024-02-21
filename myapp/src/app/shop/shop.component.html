@@ -16,13 +16,14 @@
     <div class="container" id="merchPC">
 
         <div class="row">
+          @for (item of items; track $index) {
           <div id="merchPack" class="col-4">
-            <img id="imgMerch" class="img-fluid">
+            <img class="ol-4 mx-auto text-center" id="imgMerch" src={{item.image}} class="img-fluid">
             <div class="row text-center" id="merchName">
-              <p class="col">Merch name</p>
+              <p class="col">{{item.title}}</p>
             </div>
             <div class="row text-center" id="merchPrice">
-              <p class="col">$0.00</p>
+              <p class="col">{{item.price | currency}}</p>
             </div>
             <div class="row text-center" id="btns">
               <div class="col-4"></div>
@@ -30,7 +31,7 @@
               <div class="col-4"></div>
             </div>
           </div>
-      
+          }
         </div>
       
       </div>
@@ -38,14 +39,14 @@
       <div class="container" id="merchSmartPhoneTablet">
       
         <div class="row">
-      
-          <div >
-            <img class="img-fluid">
+          @for (item of items; track $index) {
+          <div>
+            <img class="img-fluid" src={{item.image}}>
             <div class="row text-center">
-              <p class="col">Merch Name</p>
+              <p class="col">{{item.title}}</p>
             </div>
             <div class="row text-center">
-              <p class="col">$0.00</p>
+              <p class="col">{{item.prince | currency}}</p>
             </div>
             <div class="row text-center">
               <div class="col-4"></div>
@@ -53,7 +54,7 @@
               <div class="col-4"></div>
             </div>
           </div>
-      
+        }
         </div>
       
       </div>
