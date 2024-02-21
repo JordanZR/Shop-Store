@@ -1,0 +1,27 @@
+.products{
+    height: 200px;
+    background-color: blue;
+}
+
+#imgMerch{
+    width: 100%;
+  }
+  #merchPack{
+    margin-top: 2em;
+  }
+  #btns{
+    margin-top: 2em;
+  }
+  
+  @media(min-width: 1001px){
+    #merchSmartPhoneTablet{
+      display: none;
+    }
+  }
+  
+  @media (min-width: 360px) and (max-width: 1000px) {
+    /* Estilos para smartphone */
+    #merchPC{
+      display: none;
+    }
+  }
