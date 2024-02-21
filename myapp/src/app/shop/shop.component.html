@@ -13,8 +13,21 @@
         <h1 class="text-center">Shopping store</h1>
         <br>
     </header>
+    <br>
+    <br>
+    
     <div class="container" id="merchPC">
-
+      <select class="form-select" id="cantidad-productos" aria-label="Default select example">
+        <option selected>Cantidad de productos</option>
+        <option value="1">3</option>
+        <option value="2">6</option>
+        <option value="3">9</option>
+        <option value="3">Todos</option>
+      </select>
+      <br>
+      <br>
+      <br>
+      <br>
         <div class="row">
           @for (item of items; track $index) {
           <div id="merchPack" class="col-4">

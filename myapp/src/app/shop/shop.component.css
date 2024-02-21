@@ -18,6 +18,10 @@
   #btns{
     margin-top: 2em;
   }
+
+  #cantidad-productos{
+    width: 250px;
+  }
   
   @media(min-width: 1001px){
     #merchSmartPhoneTablet{
