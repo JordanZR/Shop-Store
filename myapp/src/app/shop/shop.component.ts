@@ -12,11 +12,11 @@ import { CurrencyPipe } from '@angular/common';
 export class ShopComponent implements OnInit{
 
   items:any[] = []
-
+  itemsAmount:number = 9
   constructor(private storeService:StoreService){}
 
   ngOnInit(){
-    this.storeService.getItems().subscribe((data)=>{
+    this.storeService.getItems(this.itemsAmount).subscribe((data)=>{
       this.items = data
       console.log(this.items)
     })

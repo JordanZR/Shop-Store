@@ -7,12 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class StoreService {
 
-  private apiUrl = 'https://fakestoreapi.com/products?limit=9';
+  private apiUrl = 'https://fakestoreapi.com/products';
 
   constructor(private http: HttpClient) { }
 
-  getItems():Observable<any>{
-    return this.http.get<any>(this.apiUrl)
+  getItems(amount:number):Observable<any>{
+    return this.http.get<any>(this.apiUrl + '?limit=' + amount)
   }
+
 
 }
