@@ -31,9 +31,15 @@ export class ShopComponent implements OnInit{
     })
   }
 
-  sortItemsPriceDesc(){
-    this.items.sort((a, b) => {
-      return b.price - a.price;
-    });
+  sortItems(opcion:any){
+    const valorSeleccionado = opcion.target.value;
+    switch(valorSeleccionado){
+      case "PreDesc":
+        this.items.sort((a, b) => {
+          return b.price - a.price;
+        });
+        break;
+
+    }
   }
 }
