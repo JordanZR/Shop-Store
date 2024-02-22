@@ -13,6 +13,7 @@ export class ShopComponent implements OnInit{
 
   items:any[] = []
   itemsAmount:number = 9
+  sortOpcion:any = ''
   constructor(private storeService:StoreService){}
 
   ngOnInit(){
@@ -28,18 +29,29 @@ export class ShopComponent implements OnInit{
     this.storeService.getItems(valorSeleccionado).subscribe((data)=>{
       this.items = data
       this.itemsAmount = valorSeleccionado
+      if(this.sortOpcion != ''){
+        this.sortItems(this.sortOpcion, false)
+        console.log(this.sortOpcion)
+      }
     })
   }
 
-  sortItems(opcion:any){
-    const valorSeleccionado = opcion.target.value;
+  sortItems(opcion:any, method:boolean){
+    let valorSeleccionado:any;
+    if(method){ valorSeleccionado = opcion.target.value;}else{valorSeleccionado = opcion}
     switch(valorSeleccionado){
       case "PreDesc":
         this.items.sort((a, b) => {
           return b.price - a.price;
         });
+        this.sortOpcion = "PreDesc";
         break;
-
+      case "PreAsc":
+        this.items.sort((a, b) => {
+          return a.price - b.price;
+        });
+        this.sortOpcion = "PreAsc";
+        break;
     }
   }
 }

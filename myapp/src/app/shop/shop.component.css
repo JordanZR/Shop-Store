@@ -19,8 +19,18 @@
     margin-top: 2em;
   }
 
+  .selects-sorting{
+    width: 475px;
+    display: flex;
+  }
+
   #cantidad-productos{
     width: 250px;
+    margin-right: 25px;
+  }
+  
+  #ordenar-productos{
+    width: 200px;
   }
   
   @media(min-width: 1001px){
