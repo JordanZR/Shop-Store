@@ -1,19 +1,18 @@
 <header>
   <br>
   <h1 class="text-center">Shopping store</h1>
-  <button (click)="prueba()">Prueba</button>
   <br>
 </header>
 <br>
 <br>
 
 <div class="container" id="merchPC">
-  <select class="form-select" id="cantidad-productos" aria-label="Default select example">
-    <option selected>Cantidad de productos</option>
-    <option>3</option>
-    <option value="2">6</option>
-    <option value="3">9</option>
-    <option value="3">Todos</option>
+  <select (change)="limitItems($event)" class="form-select" id="cantidad-productos" aria-label="Default select example">
+    <option selected >Cantidad de productos</option>
+    <option value=3>3</option>
+    <option value=6>6</option>
+    <option value=9>9</option>
+    <option value="">Todos</option>
   </select>
   <br>
   <br>

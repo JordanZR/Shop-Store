@@ -16,18 +16,18 @@ export class ShopComponent implements OnInit{
   constructor(private storeService:StoreService){}
 
   ngOnInit(){
-    this.limitItems(this.itemsAmount)
-  }
-
-  limitItems(itemsAmount:number):void{
-    this.storeService.getItems(itemsAmount).subscribe((data)=>{
+    this.storeService.getItems(this.itemsAmount).subscribe((data)=>{
       this.items = data
-      this.itemsAmount = itemsAmount
-      console.log("test")
+      console.log("Success")
     })
   }
 
-  prueba(){
-    window.location.href = 'https://www.google.com';
+  limitItems(itemsAmount:any):void{
+    const valorSeleccionado = itemsAmount.target.value;
+    console.log('Opción seleccionada:', valorSeleccionado);
+    this.storeService.getItems(valorSeleccionado).subscribe((data)=>{
+      this.items = data
+      this.itemsAmount = valorSeleccionado
+    })
   }
 }

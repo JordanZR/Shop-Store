@@ -15,5 +15,4 @@ export class StoreService {
     return this.http.get<any>(this.apiUrl + '?limit=' + amount)
   }
 
-
 }
