@@ -99,9 +99,9 @@ export class ShopComponent implements OnInit{
     this.categorias.sort();
   }
 
-  showItem() {
+  showItem(id:number) {
     console.log("prueba")
-    this.selectItemService.cambiarDatos(2);
+    this.selectItemService.cambiarDatos(id);
     this.dialog.open(ModalComponent);
   }
 }

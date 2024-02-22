@@ -1,1 +1,19 @@
-<p>modal works! y {{datos}}</p>
+<div class="container" id="contenedor-modal">
+    <div id="merchPack" class="col-4">
+        <img class="ol-4 mx-auto text-center" id="imgMerch" src={{item.image}} class="img-fluid">
+        <div class="row text-center" id="merchName">
+          <p class="col">{{item.title}}</p>
+        </div>
+        <div class="row text-center" id="merchPrice">
+          <p class="col">{{item.price | currency}}</p>
+        </div>
+        <div class="row text-center" id="merchPrice">
+            <p class="col">Descripción: {{item.description}}</p>
+          </div>
+        <div class="row text-center" id="btns">
+          <div class="col-4"></div>
+          <button type="button" class="col-4 btn btn-outline-primary">Comprar</button>
+          <div class="col-4"></div>
+        </div>
+    </div>
+</div>
