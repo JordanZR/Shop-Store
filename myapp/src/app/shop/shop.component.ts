@@ -30,4 +30,10 @@ export class ShopComponent implements OnInit{
       this.itemsAmount = valorSeleccionado
     })
   }
+
+  sortItemsPriceDesc(){
+    this.items.sort((a, b) => {
+      return b.price - a.price;
+    });
+  }
 }
