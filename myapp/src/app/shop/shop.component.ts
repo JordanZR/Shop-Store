@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../services/store.service';
 import { CurrencyPipe } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-shop',
@@ -17,8 +19,9 @@ export class ShopComponent implements OnInit{
   categorias:any[] = []
   itemsNoFiltrados:any[] = []
   categoria:string = ''
+  
 
-  constructor(private storeService:StoreService){}
+  constructor(private storeService:StoreService, public dialog: MatDialog){}
 
   ngOnInit(){
     this.storeService.getItems(this.itemsAmount).subscribe((data)=>{
@@ -31,16 +34,20 @@ export class ShopComponent implements OnInit{
 
   limitItems(itemsAmount:any):void{
     const valorSeleccionado = itemsAmount.target.value;
+    let selectElement: HTMLSelectElement = document.getElementById('ordenar-categorias') as HTMLSelectElement;
     console.log('Opción seleccionada:', valorSeleccionado);
     this.storeService.getItems(valorSeleccionado).subscribe((data)=>{
       this.items = data
       this.itemsNoFiltrados = data
       this.itemsAmount = valorSeleccionado
-      if(this.sortOpcion != ''){
-        this.sortItems(this.sortOpcion, false)
-      }
       this.getCategories();
-      this.sortByCategory(this.categoria, false)
+      console.log(this.categoria)
+      console.log("Categorias: " + this.categorias)
+      if(this.categorias.includes(this.categoria) == true){
+        this.sortItems(this.sortOpcion, false);
+      }else{
+        selectElement.selectedIndex = 0;
+      }
     })
   }
 
@@ -81,7 +88,7 @@ export class ShopComponent implements OnInit{
       this.itemsNoFiltrados = this.items;
       this.items = this.items.filter((item) => item.category === valorSeleccionado);
     }
-    }
+  }
 
   getCategories(){
     this.categorias = []
@@ -90,5 +97,10 @@ export class ShopComponent implements OnInit{
       if(this.categorias.includes(item.category) == false){this.categorias.push(item.category)}
     });
     this.categorias.sort();
+  }
+
+  showItem() {
+    console.log("prueba")
+    this.dialog.open(ModalComponent);
   }
 }

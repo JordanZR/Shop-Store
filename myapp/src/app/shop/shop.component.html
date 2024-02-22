@@ -5,7 +5,7 @@
 </header>
 <br>
 <br>
-
+<button (click)="showItem()">Prueba modal</button>
 <div class="container" id="merchPC">
   <div class="selects-sorting">
     <select (change)="limitItems($event)" class="form-select" id="cantidad-productos" aria-label="Default select example">
@@ -22,8 +22,8 @@
       <option value="NameA-Z">Nombre A-Z</option>
       <option value="NameZ-A">Nombre Z-A</option>
     </select>
-    <select (change)="sortByCategory($event, true)" class="form-select" id="ordenar-categorias" aria-label="Default select example">
-      <option>Categorias</option>
+    <select #selectCategorias (change)="sortByCategory($event, true)" class="form-select" id="ordenar-categorias" aria-label="Default select example">
+      <option value="Opcion0">Categorias</option>
       @for (categoria of categorias; track $index) {
       <option value={{categoria}}>{{categoria}}</option>
     }
