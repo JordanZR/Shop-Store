@@ -22,10 +22,10 @@
       <option value="NameA-Z">Nombre A-Z</option>
       <option value="NameZ-A">Nombre Z-A</option>
     </select>
-    <select (change)="sortItems($event, true)" class="form-select" id="ordenar-productos" aria-label="Default select example">
+    <select (change)="sortByCategory($event, true)" class="form-select" id="ordenar-categorias" aria-label="Default select example">
       <option selected >Categorias</option>
       @for (categoria of categorias; track $index) {
-      <option>{{categoria}}</option>
+      <option value={{categoria}}>{{categoria}}</option>
     }
     </select>
   </div>

@@ -15,12 +15,14 @@ export class ShopComponent implements OnInit{
   itemsAmount:number = 9
   sortOpcion:any = ''
   categorias:any[] = []
+  itemsNoFiltrados:any[] = []
 
   constructor(private storeService:StoreService){}
 
   ngOnInit(){
     this.storeService.getItems(this.itemsAmount).subscribe((data)=>{
-      this.items = data
+      this.items = data;
+      this.itemsNoFiltrados = data;
       this.getCategories();
       console.log("Success")
     })
@@ -31,6 +33,7 @@ export class ShopComponent implements OnInit{
     console.log('Opción seleccionada:', valorSeleccionado);
     this.storeService.getItems(valorSeleccionado).subscribe((data)=>{
       this.items = data
+      this.itemsNoFiltrados = data
       this.itemsAmount = valorSeleccionado
       if(this.sortOpcion != ''){
         this.sortItems(this.sortOpcion, false)
@@ -64,10 +67,18 @@ export class ShopComponent implements OnInit{
     this.getCategories();
   }
 
+  sortByCategory(categoria:any, method:boolean){
+    let valorSeleccionado:any;
+    if(method){ valorSeleccionado = categoria.target.value;}else{valorSeleccionado = categoria}
+    console.log(valorSeleccionado);
+    this.items = this.itemsNoFiltrados
+    this.itemsNoFiltrados = this.items;
+    this.items = this.items.filter((item) => item.category === valorSeleccionado);
+    }
+
   getCategories(){
     this.categorias = []
     this.items.forEach((item) => {
-      console.log(item.category)
       if(this.categorias.includes(item.category) == false){this.categorias.push(item.category)}
     });
   }
