@@ -56,6 +56,10 @@ export class ShopComponent implements OnInit{
         this.items.sort((a, b) => a.title.localeCompare(b.title));
         this.sortOpcion = valorSeleccionado;
         break;
+      case "NameZ-A":
+        this.items.sort((a, b) => b.title.localeCompare(a.title));
+        this.sortOpcion = valorSeleccionado;
+        break;
     }
   }
 }
