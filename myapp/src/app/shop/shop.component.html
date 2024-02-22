@@ -5,7 +5,6 @@
 </header>
 <br>
 <br>
-<button (click)="showItem()">Prueba modal</button>
 <div class="container" id="merchPC">
   <div class="selects-sorting">
     <select (change)="limitItems($event)" class="form-select" id="cantidad-productos" aria-label="Default select example">
@@ -49,7 +48,7 @@
       </div>
       <div class="row text-center" id="btns">
         <div class="col-4"></div>
-        <button type="button" class="col-4 btn btn-outline-primary">Comprar</button>
+        <button (click)="showItem()" type="button" class="col-4 btn btn-outline-primary">Mostrar</button>
         <div class="col-4"></div>
       </div>
     </div>

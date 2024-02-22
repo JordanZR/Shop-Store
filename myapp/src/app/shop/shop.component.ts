@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { StoreService } from '../services/store.service';
 import { CurrencyPipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
+import { SelectItemService } from '../services/select-item/select-item.service';
 
 @Component({
   selector: 'app-shop',
@@ -19,9 +20,8 @@ export class ShopComponent implements OnInit{
   categorias:any[] = []
   itemsNoFiltrados:any[] = []
   categoria:string = ''
-  
 
-  constructor(private storeService:StoreService, public dialog: MatDialog){}
+  constructor(private storeService:StoreService, public dialog: MatDialog, private selectItemService: SelectItemService){}
 
   ngOnInit(){
     this.storeService.getItems(this.itemsAmount).subscribe((data)=>{
@@ -101,6 +101,7 @@ export class ShopComponent implements OnInit{
 
   showItem() {
     console.log("prueba")
+    this.selectItemService.cambiarDatos(2);
     this.dialog.open(ModalComponent);
   }
 }
