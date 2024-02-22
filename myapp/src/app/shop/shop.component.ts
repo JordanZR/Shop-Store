@@ -16,6 +16,7 @@ export class ShopComponent implements OnInit{
   sortOpcion:any = ''
   categorias:any[] = []
   itemsNoFiltrados:any[] = []
+  categoria:string = ''
 
   constructor(private storeService:StoreService){}
 
@@ -39,6 +40,7 @@ export class ShopComponent implements OnInit{
         this.sortItems(this.sortOpcion, false)
       }
       this.getCategories();
+      this.sortByCategory(this.categoria, false)
     })
   }
 
@@ -68,12 +70,14 @@ export class ShopComponent implements OnInit{
   }
 
   sortByCategory(categoria:any, method:boolean){
-    let valorSeleccionado:any;
-    if(method){ valorSeleccionado = categoria.target.value;}else{valorSeleccionado = categoria}
-    console.log(valorSeleccionado);
-    this.items = this.itemsNoFiltrados
-    this.itemsNoFiltrados = this.items;
-    this.items = this.items.filter((item) => item.category === valorSeleccionado);
+    if(categoria!=''){
+      let valorSeleccionado:any;
+      if(method){ valorSeleccionado = categoria.target.value;}else{valorSeleccionado = categoria}
+      this.categoria = valorSeleccionado;
+      this.items = this.itemsNoFiltrados;
+      this.itemsNoFiltrados = this.items;
+      this.items = this.items.filter((item) => item.category === valorSeleccionado);
+    }
     }
 
   getCategories(){

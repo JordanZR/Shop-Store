@@ -9,21 +9,21 @@
 <div class="container" id="merchPC">
   <div class="selects-sorting">
     <select (change)="limitItems($event)" class="form-select" id="cantidad-productos" aria-label="Default select example">
-      <option selected >Cantidad de productos</option>
+      <option>Cantidad de productos</option>
       <option value=3>3</option>
       <option value=6>6</option>
       <option value=9>9</option>
       <option value="">Todos</option>
     </select>
     <select (change)="sortItems($event, true)" class="form-select" id="ordenar-productos" aria-label="Default select example">
-      <option selected >Ordenar productos</option>
+      <option>Ordenar productos</option>
       <option value="PreDesc">Precios más altos</option>
       <option value="PreAsc">Precios más bajos</option>
       <option value="NameA-Z">Nombre A-Z</option>
       <option value="NameZ-A">Nombre Z-A</option>
     </select>
     <select (change)="sortByCategory($event, true)" class="form-select" id="ordenar-categorias" aria-label="Default select example">
-      <option selected >Categorias</option>
+      <option>Categorias</option>
       @for (categoria of categorias; track $index) {
       <option value={{categoria}}>{{categoria}}</option>
     }
