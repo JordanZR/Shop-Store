@@ -14,7 +14,6 @@ export class ShopComponent implements OnInit{
   items:any[] = []
   itemsAmount:number = 9
   sortOpcion:any = ''
-  categoriasUnicas = new Set<string>();
   categorias:any[] = []
 
   constructor(private storeService:StoreService){}
@@ -22,9 +21,9 @@ export class ShopComponent implements OnInit{
   ngOnInit(){
     this.storeService.getItems(this.itemsAmount).subscribe((data)=>{
       this.items = data
+      this.getCategories();
       console.log("Success")
     })
-    this.getCategories();
   }
 
   limitItems(itemsAmount:any):void{
@@ -35,10 +34,9 @@ export class ShopComponent implements OnInit{
       this.itemsAmount = valorSeleccionado
       if(this.sortOpcion != ''){
         this.sortItems(this.sortOpcion, false)
-        console.log(this.sortOpcion)
       }
+      this.getCategories();
     })
-    this.getCategories();
   }
 
   sortItems(opcion:any, method:boolean){
@@ -67,9 +65,10 @@ export class ShopComponent implements OnInit{
   }
 
   getCategories(){
+    this.categorias = []
     this.items.forEach((item) => {
-      this.categoriasUnicas.add(item.category);
+      console.log(item.category)
+      if(this.categorias.includes(item.category) == false){this.categorias.push(item.category)}
     });
-    this.categorias = Array.from(this.categoriasUnicas);
   }
 }
