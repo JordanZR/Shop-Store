@@ -47,6 +47,8 @@ export class ShopComponent implements OnInit{
   sortItems(opcion:any, method:boolean){
     let valorSeleccionado:any;
     if(method){ valorSeleccionado = opcion.target.value;}else{valorSeleccionado = opcion}
+    this.items = this.itemsNoFiltrados;
+    this.itemsNoFiltrados = this.items;
     switch(valorSeleccionado){
       case "PreDesc":
         this.items.sort((a, b) => {
@@ -67,6 +69,7 @@ export class ShopComponent implements OnInit{
     }
     this.sortOpcion = valorSeleccionado;
     this.getCategories();
+    this.sortByCategory(this.categoria, false);
   }
 
   sortByCategory(categoria:any, method:boolean){
@@ -82,8 +85,10 @@ export class ShopComponent implements OnInit{
 
   getCategories(){
     this.categorias = []
+    this.items = this.itemsNoFiltrados;
     this.items.forEach((item) => {
       if(this.categorias.includes(item.category) == false){this.categorias.push(item.category)}
     });
+    this.categorias.sort();
   }
 }
