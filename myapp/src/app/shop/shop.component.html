@@ -22,6 +22,12 @@
       <option value="NameA-Z">Nombre A-Z</option>
       <option value="NameZ-A">Nombre Z-A</option>
     </select>
+    <select (change)="sortItems($event, true)" class="form-select" id="ordenar-productos" aria-label="Default select example">
+      <option selected >Categorias</option>
+      @for (categoria of categorias; track $index) {
+      <option>{{categoria}}</option>
+    }
+    </select>
   </div>
   
   <br>
@@ -34,6 +40,9 @@
       <img class="ol-4 mx-auto text-center" id="imgMerch" src={{item.image}} class="img-fluid">
       <div class="row text-center" id="merchName">
         <p class="col">{{item.title}}</p>
+      </div>
+      <div class="row text-center" id="merchPrice">
+        <p class="col">Categoria: {{item.category}}</p>
       </div>
       <div class="row text-center" id="merchPrice">
         <p class="col">{{item.price | currency}}</p>
