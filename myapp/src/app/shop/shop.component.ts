@@ -44,13 +44,17 @@ export class ShopComponent implements OnInit{
         this.items.sort((a, b) => {
           return b.price - a.price;
         });
-        this.sortOpcion = "PreDesc";
+        this.sortOpcion = valorSeleccionado;
         break;
       case "PreAsc":
         this.items.sort((a, b) => {
           return a.price - b.price;
         });
-        this.sortOpcion = "PreAsc";
+        this.sortOpcion = valorSeleccionado;
+        break;
+      case "NameA-Z":
+        this.items.sort((a, b) => a.title.localeCompare(b.title));
+        this.sortOpcion = valorSeleccionado;
         break;
     }
   }
